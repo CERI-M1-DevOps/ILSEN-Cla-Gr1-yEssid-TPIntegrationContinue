@@ -8,6 +8,8 @@ jobs:
   build:
     name: Build and test with Maven
     runs-on: ubuntu-latest
+    env:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
     steps:
       - name: Checkout du dépôt
         uses: actions/checkout@v4
@@ -22,3 +24,5 @@ jobs:
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar  -Dsonar.projectKey=$(echo ${{ github.repository }} | sed 's-/-_-')
          
 
+     
+       
